@@ -49,6 +49,9 @@ class JaMegaFilterControllerDefaults extends JControllerAdmin
 		{
 			if ($this->getModel()->exportById($item->id)) {
 				$app->enqueueMessage(JText::_('COM_JAMEGAFILTER_EXPORT_SUCCESS'));
+
+				//flushing keeps the connection alive
+    				flush();
 			}
 		}
 		$this->setRedirect('index.php?option=com_jamegafilter');
